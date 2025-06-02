@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin Tutorial | Eren Yurtcu</title>
+    <link rel="icon" type="image/png" href="network.png">
+    <link href="assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+    <link href="assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/master.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav id="sidebar" class="active">
+      <div class="sidebar-header">
+        <h3 class="text-center" style="
+        padding-top: 3%;
+        color: #90e4f4;
+        text-shadow:
+            -1px -1px 0 #6c757d,
+            1px -1px 0 #6c757d,
+            -1px  1px 0 #6c757d,
+            1px  1px 0 #6c757d;">
+        Yurtcu Networks
+        </h3>
+
+
+      </div>
+      <ul class="list-unstyled components text-secondary">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="shielded-cable-issue.html"><i class="fas fa-bolt"></i> Shielded Cable Issue</a></li>
+        <li><a href="fiber-issues.html"><i class="fas fa-network-wired"></i> Fiber Damage</a></li>
+        <li><a href="switch-loop.html"><i class="fas fa-exchange-alt"></i> Switch Loop</a></li>
+        <li><a href="imei-risk.html"><i class="fas fa-mobile-alt"></i> IMEI Risk</a></li>
+        <li><a href="dns-error.html"><i class="fas fa-globe"></i> DNS Error</a></li>
+        <li><a href="tcp-delay.html"><i class="fas fa-tachometer-alt"></i> TCP Delay</a></li>
+        <li><a href="upload-download.html"><i class="fas fa-upload"></i> Upload/Download</a></li>
+        <li><a href="port-in-use.html"><i class="fas fa-plug"></i> Port Conflict</a></li>
+        <li><a href="ssl-error.html"><i class="fas fa-lock"></i> SSL/TLS Issue</a></li>
+        <li><a href="firewall-port.html"><i class="fas fa-shield-alt"></i> Firewall Block</a></li>
+        <li class="active"><a href="bandwidth-stream.html"><i class="fas fa-video"></i> Stream Lag</a></li>
+      </ul>
+    </nav>
+
+        <div id="body" class="active">
+            <nav class="navbar navbar-expand-lg navbar-white bg-white">
+                <button type="button" id="sidebarCollapse" class="btn btn-light">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav ms-auto">
+                        <li class="nav-item">
+                        <span class="nav-link" style="position: fixed; right: 20px; top: 10px; z-index: 1030;">
+                            <i class="fas fa-user"></i> Eren Yurtcu
+                        </span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 page-header">
+                            <div class="page-pretitle">Final Design Project</div>
+                            <h2 class="page-title">Network Admin Troubleshooting Guide</h2>
+                            <p class="text-muted">Solving real-world network problems from Layer 1 to Layer 7</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card mt-3">
+                                <div class="content">
+                                    <h5>📋 Project Overview</h5>
+                                    <p>This site provides detailed technical guides and solutions for 11 real-world network problems. Each issue is categorized based on the OSI model and includes both explanation and resolution steps.</p>
+                                    <ul>
+                                        <li>Each issue links to a dedicated page</li>
+                                        <li>Simulations available via Packet Tracer where applicable</li>
+                                        <li>Design follows Bootstrap Admin Template</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="card mt-3">
+                            <div class="content">
+                                <h5>🧭 Start with a Problem</h5>
+                                <p>Use arrows or wait. This carousel loops infinitely:</p>
+
+                                <div class="scroll-wrapper position-relative">
+                                <!-- Sol ok -->
+                                <button class="scroll-btn scroll-left btn btn-light">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+
+                                <!-- Scroll kartları -->
+                                <div id="carousel" class="d-flex">
+                                    <div class="scroll-card px-2 flex-shrink-0">
+                                    <a href="#" class="card p-3 text-decoration-none h-100">
+                                        <h6><i class="fas fa-bolt me-1"></i> Shielded Cable</h6>
+                                        <small>EMI issues</small>
+                                    </a>
+                                    </div>
+                                    <div class="scroll-card px-2 flex-shrink-0">
+                                    <a href="#" class="card p-3 text-decoration-none h-100">
+                                        <h6><i class="fas fa-network-wired me-1"></i> Fiber Damage</h6>
+                                        <small>Physical layer errors</small>
+                                    </a>
+                                    </div>
+                                    <div class="scroll-card px-2 flex-shrink-0">
+                                    <a href="#" class="card p-3 text-decoration-none h-100">
+                                        <h6><i class="fas fa-exchange-alt me-1"></i> Switch Loop</h6>
+                                        <small>Broadcast storm</small>
+                                    </a>
+                                    </div>
+                                    <div class="scroll-card px-2 flex-shrink-0">
+                                    <a href="#" class="card p-3 text-decoration-none h-100">
+                                        <h6><i class="fas fa-mobile-alt me-1"></i> IMEI Risk</h6>
+                                        <small>Device spoofing</small>
+                                    </a>
+                                    </div>
+                                    <div class="scroll-card px-2 flex-shrink-0">
+                                    <a href="#" class="card p-3 text-decoration-none h-100">
+                                        <h6><i class="fas fa-globe me-1"></i> DNS Error</h6>
+                                        <small>Name resolution</small>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <!-- Sağ ok -->
+                                <button class="scroll-btn scroll-right btn btn-light">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

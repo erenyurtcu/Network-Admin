@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>SSL/TLS Error | Yurtcu Networks</title>
+  <link href="assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/master.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar" class="active">
+      <div class="sidebar-header">
+        <h3 class="text-info text-center" style="padding-top: 3%;">Yurtcu Networks</h3>
+      </div>
+      <ul class="list-unstyled components text-secondary">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="shielded-cable-issue.html"><i class="fas fa-bolt"></i> Shielded Cable Issue</a></li>
+        <li><a href="fiber-issues.html"><i class="fas fa-network-wired"></i> Fiber Damage</a></li>
+        <li><a href="switch-loop.html"><i class="fas fa-exchange-alt"></i> Switch Loop</a></li>
+        <li><a href="imei-risk.html"><i class="fas fa-mobile-alt"></i> IMEI Risk</a></li>
+        <li><a href="dns-error.html"><i class="fas fa-globe"></i> DNS Error</a></li>
+        <li><a href="tcp-delay.html"><i class="fas fa-tachometer-alt"></i> TCP Delay</a></li>
+        <li><a href="upload-download.html"><i class="fas fa-upload"></i> Upload/Download</a></li>
+        <li><a href="port-in-use.html"><i class="fas fa-plug"></i> Port Conflict</a></li>
+        <li class="active"><a href="ssl-error.html"><i class="fas fa-lock"></i> SSL/TLS Issue</a></li>
+        <li><a href="firewall-port.html"><i class="fas fa-shield-alt"></i> Firewall Block</a></li>
+        <li><a href="bandwidth-stream.html"><i class="fas fa-video"></i> Stream Lag</a></li>
+      </ul>
+    </nav>
+
+    <div id="body" class="active">
+      <nav class="navbar navbar-expand-lg navbar-white bg-white">
+        <button type="button" id="sidebarCollapse" class="btn btn-light">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav ms-auto">
+            <li class="nav-item">
+              <span class="nav-link"><i class="fas fa-user"></i> Eren Yurtcu</span>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Content -->
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 page-header">
+              <div class="page-pretitle">Session/Presentation Layer Issue</div>
+              <h2 class="page-title">SSL/TLS Certificate Errors</h2>
+              <p class="text-muted">When secure connections fail due to certificate or protocol mismatch</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card mt-3">
+                <div class="content">
+                  <h5>🔒 Problem Description</h5>
+                  <p>SSL/TLS certificates ensure secure communication. If the certificate is expired, misconfigured, or invalid (e.g., wrong hostname), the connection is refused or shows a security warning.</p>
+                  <p>This affects both browsers and backend APIs using HTTPS.</p>
+                </div>
+              </div>
+
+              <div class="card mt-3">
+                <div class="content">
+                  <h5>🛠️ Resolution</h5>
+                  <ul>
+                    <li>Renew or reissue the SSL certificate before expiration.</li>
+                    <li>Ensure certificate CN/SAN matches the domain name.</li>
+                    <li>Use correct TLS versions (e.g., TLS 1.2 or 1.3).</li>
+                    <li>Verify certificate chain using tools like <code>openssl</code> or browser dev tools.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="card mt-3">
+                <div class="content">
+                  <h5>📁 Resources</h5>
+                  <ul>
+                    <li><a href="#">📄 How to Fix SSL Errors</a></li>
+                    <li><a href="#">🔍 TLS Handshake Debug Tool</a></li>
+                    <li><a href="#">🎥 Certificate Configuration Tutorial</a></li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
