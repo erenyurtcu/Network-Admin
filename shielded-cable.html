@@ -87,33 +87,53 @@
               <div class="card mt-3">
                 <div class="content">
                   <h5>🧾 Problem Description</h5>
-                  <p>In some environments, shielded twisted pair (STP) cables are required due to high electromagnetic interference (EMI).</p>
-                  <p>However, if shielding is not properly grounded or compatible with equipment, it may **cause more problems** than it solves.</p>
-                </div>
-              </div>
+                  <p>Electromagnetic Interference (EMI) is a common threat to network signal quality. It occurs when electromagnetic radiation from external sources—such as lightning strikes, power lines, motors, UPS units, or even weather conditions—interferes with data transmission.</p>
 
-              <div class="card mt-3">
-                <div class="content">
-                  <h5>🛠️ Resolution</h5>
+                  <p>To combat EMI, Shielded Twisted Pair (STP) cables are often used instead of Unshielded Twisted Pair (UTP). STP cables include a metallic shield that protects the data lines from external noise and interference. This makes them especially suitable for industrial sites, hospitals, or areas with heavy electrical equipment.</p>
+
+                  <p>However, STP cables must be <strong>properly installed and grounded</strong>. If not:</p>
                   <ul>
-                    <li>Check ground connectivity on both ends of the STP cable.</li>
-                    <li>Use UTP cables in low-EMI environments.</li>
-                    <li>Ensure proper shielding is compatible with the NIC or switch chassis.</li>
-                    <li>Packet Tracer simulation is provided below.</li>
+                    <li>The shielding can act as an antenna and collect EMI instead of blocking it.</li>
+                    <li>Improper grounding (e.g., at both ends or no end) can create ground loops, introducing more noise.</li>
+                    <li>Non-metallic RJ45 connectors may break the shielding continuity.</li>
+                    <li>The shielding may not be connected to the device chassis (e.g., switch, NIC), making it useless.</li>
+                  </ul>
+
+                  <p>These issues can lead to:</p>
+                  <ul>
+                    <li>CRC (Cyclic Redundancy Check) errors on interfaces</li>
+                    <li>Late collisions in half-duplex systems</li>
+                    <li>Random disconnections and retransmissions</li>
+                    <li>Overall degraded throughput despite good hardware</li>
                   </ul>
                 </div>
               </div>
 
+            <div class="card mt-3">
+              <div class="content">
+                <h5>🛠️ Resolution</h5>
+                <ul>
+                  <li>Use STP only when EMI sources are present; otherwise, UTP is simpler and more cost-effective.</li>
+                  <li>Ground the cable shield at one end only (preferably patch panel side) to prevent ground loops.</li>
+                  <li>Ensure devices (switches, NICs) support shielded connections and are bonded to ground.</li>
+                  <li>Use proper shielded RJ45 connectors and ensure full 360° shielding contact.</li>
+                  <li>Route STP cables away from high EMI sources (minimum 30 cm distance from power lines, UPS units).</li>
+                  <li>Use commands like <code>show interfaces</code> to check for <code>CRC</code>, <code>input errors</code>, or <code>collisions</code>.</li>
+                </ul>
+              </div>
+            </div>
+            
               <div class="card mt-3">
                 <div class="content">
                   <h5>📁 Resources</h5>
                   <ul>
                     <li><a href="#">📦 Download Packet Tracer (.pkt)</a></li>
-                    <li><a href="#">📄 PDF Explanation</a></li>
-                    <li><a href="#">🎥 Watch Demo</a></li>
+                    <li><a href="#">📄 PDF: STP vs UTP Best Practices and Grounding</a></li>
+                    <li><a href="#">🎥 Video Demo: EMI Issue and How to Fix It</a></li>
                   </ul>
                 </div>
               </div>
+
 
             </div>
           </div>
