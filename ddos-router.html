@@ -10,7 +10,91 @@
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/css/master.css" rel="stylesheet">
 </head>
+<style>
+    .text-muted{
+      color: #cc6e6e;
+    }
+    body {
+      background-color: #161616 !important;
+      color: #e0e0e0 !important;
+    }
 
+    .card {
+      background-color: #292929 !important;
+      border-color: #333 !important;
+    }
+
+    .card h5, .card p, .card ul li, .page-title, .page-pretitle, .nav-link, .sidebar-header h3 {
+      color: #e0e0e0 !important;
+    }
+
+    .navbar, .navbar-white, .bg-white {
+      background-color: #1c1c1c !important;
+    }
+
+    .sidebar-header, #sidebar {
+      background-color: #181818 !important;
+    }
+
+    .list-unstyled .active a, .list-unstyled li a:hover {
+      background-color: #333 !important;
+      color: #ffffff !important;
+    }
+
+    .btn-light {
+      background-color: #333 !important;
+      color: #ffffff !important;
+      border: none;
+    }
+
+  .code-box {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: 'Courier New', monospace;
+    position: relative;
+    overflow-x: auto;
+    margin-top: 1rem;
+  }
+
+  .code-box pre {
+    margin: 0;
+    padding-top: 2rem;
+  }
+
+  .code-box .code-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #2d2d2d;
+    color: #ffffff;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    z-index: 2;
+  }
+
+  .code-box .copy-btn {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.75rem;
+    background: #444;
+    color: white;
+    border: none;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .code-box .copy-btn:hover {
+    background: #5a5a5a;
+  }
+</style>
 <body>
   <div class="wrapper">
     <nav id="sidebar" class="active">
@@ -41,7 +125,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav ms-auto">
             <li class="nav-item">
-              <span class="nav-link"><i class="fas fa-user"></i> Eren Yurtcu</span>
+              <span class="nav-link"><i class="fas fa-user"></i> M. Erdem</span>
             </li>
           </ul>
         </div>
@@ -54,7 +138,7 @@
             <div class="col-md-12 page-header">
               <div class="page-pretitle">Application Layer Issue</div>
               <h2 class="page-title">Firewall Blocks HTTP Port</h2>
-              <p class="text-muted">HTTPS works, but HTTP is blocked – classic firewall port configuration error</p>
+              <p style="color: #575757;">HTTPS works, but HTTP is blocked – classic firewall port configuration error</p>
             </div>
           </div>
 
@@ -62,20 +146,96 @@
             <div class="col-lg-12">
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🚫 Problem Description</h5>
-                  <p>Some users can access your site via <code>https://</code> but not via <code>http://</code>. This typically occurs when port 443 is open while port 80 is blocked by a firewall or router.</p>
-                  <p>This misconfiguration can cause SEO issues, redirect loops, or user trust problems.</p>
+                  <h5>💣 Problem Description: DDoS & DNS Flood Attacks</h5>
+                  <p>Distributed Denial of Service (DDoS) attacks aim to overwhelm network resources by sending massive traffic to targets. One prevalent variant is the <strong>DNS Flood</strong>, where attackers send a deluge of DNS requests to overburden name servers or use open resolvers for reflection attacks.</p>
+                  
+                  <p><strong>Primary Objectives of Attackers:</strong></p>
+                  <ul>
+                    <li>Exhaust network bandwidth</li>
+                    <li>Crash or slow down DNS resolution services</li>
+                    <li>Disrupt application connectivity via name resolution failure</li>
+                    <li>Consume CPU and memory of edge devices (routers/firewalls)</li>
+                  </ul>
+
+                  <p><strong>❗ Real-world behavior:</strong> Even if backend services are intact, unresolved DNS queries render the entire infrastructure unreachable. Users perceive it as "internet down."</p>
+
+                  <p>These attacks are often difficult to trace due to:</p>
+                  <ul>
+                    <li>Source IP spoofing (hard to block based on IP)</li>
+                    <li>Use of legitimate DNS query formats</li>
+                    <li>Amplification tactics via public resolvers (e.g., 1 small query → 50x bigger response)</li>
+                  </ul>
                 </div>
               </div>
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🛠️ Resolution</h5>
+                  <h5>🛡️ Resolution: Multi-layered Defense Strategy</h5>
+                  <p>Defending against DNS-based DDoS requires <strong>Layer 3–7 mitigation techniques</strong> integrated across infrastructure and cloud. Suggested actions include:</p>
+
                   <ul>
-                    <li>Ensure that both ports 80 (HTTP) and 443 (HTTPS) are open in firewall settings.</li>
-                    <li>Configure web server to redirect HTTP to HTTPS properly (e.g., with 301 redirect).</li>
-                    <li>Check cloud firewall rules (e.g., AWS Security Groups, GCP firewall).</li>
-                    <li>Use `curl` or `telnet` to verify open ports from client side.</li>
+                    <li><strong>Rate Limiting & QoS:</strong> Prioritize DNS/HTTPS traffic with policies that limit bursts and protect application traffic.</li>
+                    <li><strong>DNS Monitoring:</strong> Use <em>NetFlow, sFlow, or DPI tools</em> to flag excessive DNS traffic from unknown sources.</li>
+                    <li><strong>Secondary Routers:</strong> Place inline filtering routers between ISP and internal network for early detection and mitigation.</li>
+                    <li><strong>Edge Firewall ACLs:</strong> Deny suspicious UDP/53 queries that don’t match allowed internal patterns.</li>
+                    <li><strong>DNS Response Rate Limiting (RRL):</strong> Prevent reflection via authoritative DNS servers.</li>
+                    <li><strong>Cloud DDoS Protection:</strong> Use third-party mitigation (e.g., Cloudflare, AWS Shield, Akamai) to absorb upstream floods.</li>
+                  </ul>
+
+
+
+                  <h6>🔗 Cisco ACL Example for DNS Flood</h6>
+                  <div class="code-box">
+                    <div class="code-header">Cisco Config</div>
+                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    <pre><code>access-list 101 deny udp any any eq 53
+          access-list 101 permit ip any any
+
+          interface GigabitEthernet0/0
+          ip access-group 101 in</code></pre>
+                  </div>
+
+                  <script>
+                  function copyToClipboard(button) {
+                    const code = button.parentElement.querySelector("pre code").innerText;
+                    navigator.clipboard.writeText(code).then(() => {
+                      button.innerText = "Copied!";
+                      setTimeout(() => button.innerText = "Copy", 2000);
+                    });
+                  }
+                  </script>
+                </div>
+              </div>
+
+              <div class="card mt-3">
+                <div class="content">
+                  <h5>🧪 Simulation: DNS Flood in Cisco Packet Tracer</h5>
+                  <p>Although Packet Tracer does not simulate full-scale DDoS, you can simulate the <strong>behavior</strong> via repeated UDP traffic:</p>
+                  <ul>
+                    <li>Rogue PC floods DNS requests (UDP/53) to internal server.</li>
+                    <li>Edge Router ACL blocks and logs excessive traffic.</li>
+                    <li>Legitimate traffic continues, proving selective protection works.</li>
+                  </ul>
+                  <p>This mimics a real-world mitigation scenario. Additional simulations may include:</p>
+                  <ul>
+                    <li>PC sending pings every 10ms → Router drops based on rate</li>
+                    <li>DNS port redirected or blocked using reflexive ACLs</li>
+                    <li>Simulated CPU overload on edge router (via traffic generator)</li>
+                  </ul>
+                  <p><strong>🧩 Included: .pkt file + router ACL lab + explanation PDF</strong></p>
+                </div>
+              </div>
+
+              <div class="card mt-3">
+                <div class="content">
+                  <h5>🔍 Real-World Case: Amplification + Reflection</h5>
+                  <p>Attackers spoof victim IPs and send DNS queries to public resolvers. The responses — much larger than requests — get sent to the victim.</p>
+                  <p>This “amplifies” the attack with minimal effort and <strong>redirects attack load to innocent systems</strong>.</p>
+                  <p>Such attacks are mitigated using:</p>
+                  <ul>
+                    <li>Source IP validation (BCP 38)</li>
+                    <li>Authoritative DNS response limits</li>
+                    <li>Geo-blocking and blackhole routing</li>
                   </ul>
                 </div>
               </div>
@@ -84,18 +244,16 @@
                 <div class="content">
                   <h5>📁 Resources</h5>
                   <ul>
-                    <li><a href="#">🌐 Port Checking Tools</a></li>
-                    <li><a href="#">🔧 Apache/Nginx Redirect Configuration</a></li>
-                    <li><a href="#">📖 SEO Best Practices for HTTPS</a></li>
+                    <li><a href="#">📦 Download Packet Tracer Simulation (.pkt)</a></li>
+                    <li><a href="#">📄 DNS Flood Detection & ACL Guide (PDF)</a></li>
+                    <li><a href="#">🎥 Video: Protecting Routers Against Floods</a></li>
                   </ul>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 

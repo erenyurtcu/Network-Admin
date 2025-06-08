@@ -62,9 +62,31 @@
             <div class="col-lg-12">
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🔒 Problem Description</h5>
-                  <p>SSL/TLS certificates ensure secure communication. If the certificate is expired, misconfigured, or invalid (e.g., wrong hostname), the connection is refused or shows a security warning.</p>
-                  <p>This affects both browsers and backend APIs using HTTPS.</p>
+                  <h5>📉 Problem Description</h5>
+                  <p>In TCP-based networks, the efficiency of ACK (Acknowledgment) delivery plays a critical role in overall throughput. The underlying network topology—how nodes, switches, and routers are interconnected—can significantly influence this behavior.</p>
+
+                  <p>Two common topologies are often compared in performance-sensitive environments:</p>
+
+                  <ul>
+                    <li><strong>Flat Topology:</strong> All devices are connected to a single large switch or broadcast domain.</li>
+                    <li><strong>Star Topology:</strong> Devices are connected hierarchically via access switches to a central core switch/router.</li>
+                  </ul>
+
+                  <p>In a flat topology, packet collisions and switch buffering can increase latency and cause delayed or dropped ACKs. Since all traffic competes in the same layer, there’s a higher risk of:</p>
+                  <ul>
+                    <li>Broadcast storms</li>
+                    <li>Queue congestion and tail drops</li>
+                    <li>Spurious retransmissions due to ACK timeout</li>
+                  </ul>
+
+                  <p>In contrast, a well-designed star topology improves segmentation and hierarchy in traffic flow. This leads to:</p>
+                  <ul>
+                    <li>Faster ACK delivery via isolated uplinks</li>
+                    <li>Better performance with Quality of Service (QoS) prioritization</li>
+                    <li>Reduced propagation delay between client and server nodes</li>
+                  </ul>
+
+                  <p>When TCP ACKs are delayed or lost in a flat topology, the sender reduces its window size, decreasing throughput even if the link has unused bandwidth.</p>
                 </div>
               </div>
 
@@ -72,13 +94,25 @@
                 <div class="content">
                   <h5>🛠️ Resolution</h5>
                   <ul>
-                    <li>Renew or reissue the SSL certificate before expiration.</li>
-                    <li>Ensure certificate CN/SAN matches the domain name.</li>
-                    <li>Use correct TLS versions (e.g., TLS 1.2 or 1.3).</li>
-                    <li>Verify certificate chain using tools like <code>openssl</code> or browser dev tools.</li>
+                    <li>Redesign physical topology into a <strong>star or hierarchical model</strong>.</li>
+                    <li>Use managed switches that support <strong>QoS (Quality of Service)</strong> and <strong>flow control</strong>.</li>
+                    <li>Monitor RTT and ACK delay using tools such as <code>iperf3</code>, <code>ping -n</code>, or <code>Wireshark</code>.</li>
+                    <li>Configure <strong>TCP congestion control algorithms</strong> (e.g., BBR or CUBIC) for better performance on long RTT networks.</li>
+                    <li>Minimize unnecessary switch hops by reducing inter-switch chaining.</li>
                   </ul>
+
+                  <h6>🧪 Suggested Packet Tracer Setup:</h6>
+                  <ul>
+                    <li>Flat Topology: PC1 → SW1 → SW2 → SW3 → PC2</li>
+                    <li>Star Topology: PC1 + PC2 both connect to SW_Core</li>
+                    <li>Use Simulation Mode to inspect TCP traffic and ACK routes</li>
+                    <li>Compare ping results and packet behavior</li>
+                  </ul>
+
+                  <p>💡 This simulation helps demonstrate why modern networks (especially data centers and cloud infrastructure) heavily favor centralized or structured designs to minimize latency, especially in TCP-based traffic.</p>
                 </div>
               </div>
+
 
               <div class="card mt-3">
                 <div class="content">

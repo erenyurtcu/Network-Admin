@@ -91,6 +91,55 @@ Notes:  decreasing heading by 0.4em with every subsequent heading level
   transition: 0.2s ease;
 }
 
+
+.code-box {
+background-color: #1e1e1e;
+color: #d4d4d4;
+border-radius: 8px;
+padding: 1rem;
+font-family: 'Courier New', monospace;
+position: relative;
+overflow-x: auto;
+margin-top: 1rem;
+}
+
+.code-box pre {
+margin: 0;
+padding-top: 2rem; /* Yer açmak için */
+}
+
+.code-box .code-header {
+position: absolute;
+top: 0;
+left: 0;
+background: #2d2d2d;
+color: #ffffff;
+padding: 0.3rem 0.75rem;
+font-size: 0.85rem;
+font-weight: bold;
+border-top-left-radius: 8px;
+border-bottom-right-radius: 8px;
+z-index: 2;
+}
+
+.code-box .copy-btn {
+position: absolute;
+top: 0.3rem;
+right: 0.75rem;
+background: #444;
+color: white;
+border: none;
+padding: 0.2rem 0.6rem;
+font-size: 0.75rem;
+border-radius: 5px;
+cursor: pointer;
+z-index: 2;
+}
+
+.code-box .copy-btn:hover {
+background: #5a5a5a;
+}
+
 .scroll-btn:hover {
   opacity: 1;
   cursor: pointer;

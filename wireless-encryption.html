@@ -63,22 +63,86 @@
               <div class="card mt-3">
                 <div class="content">
                   <h5>📉 Problem Description</h5>
-                  <p>In certain networks, download speed may be fast while upload speed remains slow. This is often due to **TCP Window Scaling** misconfiguration or asymmetrical routing that limits efficient ACK sending.</p>
-                  <p>This bottleneck is especially common in consumer routers, VPN tunnels, or misconfigured QoS rules.</p>
+                  <p>Wireless networks transmit data using electromagnetic waves. This means:</p>
+                  <ul>
+                    <li>Data is broadcasted in a shared medium, anyone nearby can potentially intercept it.</li>
+                    <li>Wireless environments are significantly less secure than wired ones by default.</li>
+                  </ul>
+                  <p>If the wireless traffic is not encrypted (e.g., open Wi-Fi or weak WEP), attackers can:</p>
+                  <ul>
+                    <li><strong>Packet Sniffing:</strong> Capture unencrypted traffic from the air, even without joining the network.</li>
+                    <li><strong>Session Hijacking:</strong> Steal active session cookies and impersonate users (e.g., Facebook login).</li>
+                    <li><strong>Evil Twin:</strong> Set up a fake AP with the same SSID to lure users into connecting to it.</li>
+                  </ul>
                 </div>
               </div>
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🛠️ Resolution</h5>
-                  <ul>
-                    <li>Check TCP Window Scaling settings (`sysctl`, `netsh`, etc.).</li>
-                    <li>Disable bufferbloat using Smart Queue Management (SQM).</li>
-                    <li>Verify there is no ACK throttling or upstream congestion.</li>
-                    <li>Use tools like `iperf3`, `netstat`, or router-level monitoring.</li>
-                  </ul>
+                  <h5>🛠️ Resolution: Layer 5 Encryption as a Defense</h5>
+                  <p>When the physical layer is insecure, the solution must be applied logically—through encryption at the session/application layers.</p>
+                  <p><strong>Examples of Layer 5+ encryption techniques:</strong></p>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr><th>Protocol</th><th>Purpose</th><th>Protection</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>HTTPS (SSL/TLS)</td><td>Web browsing</td><td>Encrypts browser-to-server data</td></tr>
+                      <tr><td>VPN (IPSec, WireGuard, OpenVPN)</td><td>Full network encryption</td><td>Tunnels traffic out of local untrusted network</td></tr>
+                      <tr><td>SSH</td><td>Remote shell</td><td>Encrypts login and terminal session</td></tr>
+                      <tr><td>SMTP over TLS</td><td>Email</td><td>Encrypts mail contents during transfer</td></tr>
+                      <tr><td>DNS over HTTPS/TLS</td><td>Domain lookup</td><td>Protects DNS queries from sniffing</td></tr>
+                    </tbody>
+                  </table>
+
+                  <h5>📚 OSI Layer Perspective</h5>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr><th>OSI Layer</th><th>Threat</th><th>Example</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>Layer 1 – Physical</td><td>Raw RF exposure</td><td>Wireless sniffing, EM leakage</td></tr>
+                      <tr><td>Layer 2 – Data Link</td><td>MAC address impersonation</td><td>MAC spoofing</td></tr>
+                      <tr><td>Layer 3 – Network</td><td>IP impersonation</td><td>IP Spoofing</td></tr>
+                      <tr><td>Layer 5 – Session</td><td>No encryption</td><td>Session ID hijack in HTTP</td></tr>
+                    </tbody>
+                  </table>
+                  <p><strong>✅ Solution:</strong> Encryption must be applied at Layer 5 or higher (HTTPS, VPN, SSH, etc.)</p>
                 </div>
               </div>
+
+              <div class="card mt-3">
+                <div class="content">
+                  <h5>🧪 Scenario: Sniffing + Evil Twin at Comvis Coffee</h5>
+                  <p>A user connects to the public Wi-Fi at <strong>Comvis Coffee</strong>, which is open or uses weak WEP encryption.</p>
+                  <ul>
+                    <li>An attacker sets up a fake AP with the same SSID.</li>
+                    <li>The user connects to the rogue AP unknowingly.</li>
+                    <li>The user opens an insecure app or HTTP website.</li>
+                    <li>The attacker intercepts session cookies or login data.</li>
+                  </ul>
+                  <p>This man-in-the-middle access allows eavesdropping, credential theft, or content injection.</p>
+                </div>
+              </div>
+
+              <div class="card mt-3">
+                <div class="content">
+                  <h5>✅ Protection Strategies</h5>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr><th>Technique</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>HTTPS Everywhere</td><td>Enforce HTTPS on all websites. Browser extensions can help.</td></tr>
+                      <tr><td>Use a VPN</td><td>All traffic is tunneled securely—essential on public Wi-Fi.</td></tr>
+                      <tr><td>DNS over TLS/HTTPS</td><td>Encrypts DNS requests to prevent domain-level leakage.</td></tr>
+                      <tr><td>EAP-TLS / WPA3-Enterprise</td><td>Use mutual authentication on enterprise wireless networks.</td></tr>
+                      <tr><td>MDM + NAC</td><td>Restrict access to compliant, secured devices based on policy.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
 
               <div class="card mt-3">
                 <div class="content">

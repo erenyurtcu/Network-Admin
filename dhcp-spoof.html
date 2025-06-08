@@ -62,24 +62,148 @@
             <div class="col-lg-12">
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🐢 Problem Description</h5>
-                  <p>TCP connections may experience high round-trip times (RTT) due to delayed acknowledgments (ACKs), poor congestion control, or misconfigured buffer/window sizes.</p>
-                  <p>This can lead to **sluggish performance**, even on networks with low packet loss and high bandwidth.</p>
+                  <h5>🐍 Problem Description</h5>
+                  <p>The DHCP server automatically assigns IP addresses to devices joining the network. However, if an attacker interferes with this process, the network can be compromised.</p>
+                  <p><strong>🔥 Critical Scenario: Rogue DHCP + ARP Poisoning</strong></p>
+                  <ul>
+                    <li>An attacker connects to the network and pretends to be a DHCP server.</li>
+                    <li>They assign incorrect default gateway (router) addresses to new clients.</li>
+                    <li>The attacker’s device becomes the "router" in the clients' eyes.</li>
+                    <li>They forward traffic to the real router so the connection appears normal.</li>
+                    <li>This enables full traffic monitoring and a potential Man-in-the-Middle (MitM) attack.</li>
+                  </ul>
+
+                  <p>🧪 Techniques Used:</p>
+                  <ul>
+                    <li><strong>IP Spoofing</strong> – The attacker fakes the source IP address.</li>
+                    <li><strong>ARP Poisoning</strong> – The attacker corrupts ARP tables to link IPs to fake MAC addresses.</li>
+                    <li><strong>DHCP Starvation</strong> – All IPs are requested to exhaust the DHCP pool, then a rogue DHCP server takes over.</li>
+                  </ul>
+
+                  <p>🧠 <strong>Stealth Factor:</strong> If the attacker forwards the traffic to the real router, employees won’t notice a problem.</p>
+                  <p><strong>⚠️ Real-World Threat:</strong> These attacks are especially common in public Wi-Fi, unprotected LANs, and poorly configured enterprise networks.</p>
                 </div>
               </div>
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🛠️ Resolution</h5>
+                  <h5>🛡️ Resolution</h5>
                   <ul>
-                    <li>Disable TCP delayed ACKs if needed (OS-level tuning).</li>
-                    <li>Adjust TCP window size and buffer values.</li>
-                    <li>Investigate congestion control algorithm in use (e.g., BBR, CUBIC).</li>
-                    <li>Use tools like `iperf`, `ping`, `tcpdump` to test latency and throughput.</li>
+                    <li><strong>1. DHCP Snooping (Layer 2 Firewall):</strong>
+                      <ul>
+                        <li>The switch only accepts DHCP responses from trusted ports.</li>
+                        <li>This prevents rogue DHCP servers from functioning.</li>
+                      </ul>
+                      <!-- 💡 Include this once in your HTML <head> -->
+                      <style>
+                      .code-box {
+                        background-color: #1e1e1e;
+                        color: #d4d4d4;
+                        border-radius: 8px;
+                        padding: 1rem;
+                        font-family: 'Courier New', monospace;
+                        position: relative;
+                        overflow-x: auto;
+                        margin-top: 1rem;
+                      }
+
+                      .code-box pre {
+                        margin: 0;
+                        padding-top: 2rem; /* Yer açmak için */
+                      }
+
+                      .code-box .code-header {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        background: #2d2d2d;
+                        color: #ffffff;
+                        padding: 0.3rem 0.75rem;
+                        font-size: 0.85rem;
+                        font-weight: bold;
+                        border-top-left-radius: 8px;
+                        border-bottom-right-radius: 8px;
+                        z-index: 2;
+                      }
+
+                      .code-box .copy-btn {
+                        position: absolute;
+                        top: 0.3rem;
+                        right: 0.75rem;
+                        background: #444;
+                        color: white;
+                        border: none;
+                        padding: 0.2rem 0.6rem;
+                        font-size: 0.75rem;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        z-index: 2;
+                      }
+
+                      .code-box .copy-btn:hover {
+                        background: #5a5a5a;
+                      }
+                      </style>
+
+                      <div class="code-box">
+                        <div class="code-header">Cisco Packet Tracer</div>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                        <pre><code>          Switch(config)# ip dhcp snooping
+          Switch(config)# ip dhcp snooping vlan 1
+          Switch(config-if)# interface fa0/1
+          Switch(config-if)# ip dhcp snooping trust</code></pre>
+                      </div>
+
+                      <script>
+                      function copyToClipboard(button) {
+                        const code = button.parentElement.querySelector("pre code").innerText;
+                        navigator.clipboard.writeText(code).then(() => {
+                          button.innerText = "Copied!";
+                          setTimeout(() => button.innerText = "Copy", 2000);
+                        });
+                      }
+                      </script>
+
+
+                    <li><strong>2. Dynamic ARP Inspection (DAI):</strong>
+                      <ul>
+                        <li>Validates ARP packets against DHCP snooping database.</li>
+                        <li>Automatically drops spoofed or invalid ARP replies.</li>
+                      </ul>
+                      <div class="code-box">
+                        <div class="code-header">Cisco Packet Tracer</div>
+                          <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                          <pre><code>          Switch(config)# ip arp inspection vlan 1
+          Switch(config-if)# interface fa0/2
+          Switch(config-if)# ip arp inspection trust</code></pre>
+                        </div>
+                    </li>
+
+                    <li><strong>3. Port Security:</strong>
+                      <ul>
+                        <li>Only allows traffic from pre-approved MAC addresses per switch port.</li>
+                        <li>Unknown devices are blocked or the port is automatically disabled.</li>
+                      </ul>
+                      <div class="code-box">
+                        <div class="code-header">Cisco Packet Tracer</div>
+                          <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                            <pre><code>          Switch(config-if)# switchport port-security
+          Switch(config-if)# switchport port-security maximum 1
+          Switch(config-if)# switchport port-security mac-address 00:11:22:33:44:55</code></pre>
+                      </div>
+                    </li>
+
+                    <li><strong>4. 802.1X + NAC / MDM Integration:</strong>
+                      <ul>
+                        <li>Devices are authenticated before joining the network.</li>
+                        <li>Unauthorized clients are isolated or assigned to guest VLANs.</li>
+                      </ul>
+                      <p><em>📌 Example Technologies:</em> Cisco ISE, Aruba ClearPass, FortiNAC, Microsoft Intune (MDM)</p>
+                    </li>
                   </ul>
                 </div>
               </div>
-
+              
               <div class="card mt-3">
                 <div class="content">
                   <h5>📁 Resources</h5>
