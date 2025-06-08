@@ -63,22 +63,96 @@
               <div class="card mt-3">
                 <div class="content">
                   <h5>🧾 Problem Description</h5>
-                  <p>Some mobile devices use spoofed IMEI numbers to bypass carrier-level restrictions or authentication, leading to unauthorized access and tracking issues.</p>
-                  <p>This can result in multiple users having the same IMEI, affecting traceability, network security, and lawful interception.</p>
+                  <p>An attacker who gains access to a corporate or employee-assigned mobile device's:</p>
+                  <ul>
+                    <li><strong>IMEI number</strong> (the unique identifier of the device)</li>
+                    <li><strong>and/or SIM card data</strong> (especially phone number and authentication details)</li>
+                  </ul>
+                  <p>can connect to the mobile network pretending to be that device.</p>
+
+                  <p><strong>1. IMEI Spoofing</strong></p>
+                  <ul>
+                    <li>The attacker makes another device appear as if it has the same IMEI as the victim’s device.</li>
+                    <li>On some rooted Android phones, IMEI can be changed manually.</li>
+                    <li>As a result, the mobile carrier considers the attacker's device as legitimate and authorized.</li>
+                  </ul>
+
+                  <p><strong>2. SIM Swap Attack</strong></p>
+                  <ul>
+                    <li>The attacker collects the victim's personal data (e.g., national ID, date of birth).</li>
+                    <li>They call the carrier pretending to be the victim and claim their SIM card is lost.</li>
+                    <li>If identity checks are passed, the mobile number is transferred to a new SIM.</li>
+                    <li>OTP (SMS verification), calls, and mobile access are now fully redirected to the attacker.</li>
+                  </ul>
+
+                  <h5>💥 Combined Threat of IMEI + SIM</h5>
+                  <ul>
+                    <li>Impersonates the victim’s number and device.</li>
+                    <li>Can sniff unencrypted mobile traffic (e.g., DNS, HTTP).</li>
+                    <li>May gain access to corporate systems that rely on IP/SMS-based verification.</li>
+                    <li>Can monitor or exfiltrate sensitive data silently.</li>
+                  </ul>
+
+                  <h5>🧪 Real-World Corporate Scenario</h5>
+                  <p>An employee uses a corporate mobile device for email, VPN, and internal apps.</p>
+                  <p>The attacker acquires the IMEI and SIM information and impersonates the user on the mobile network.</p>
+                  <ul>
+                    <li>Accesses corporate VPN.</li>
+                    <li>Receives OTPs for two-factor authentication.</li>
+                    <li>Passes phone-based security checks.</li>
+                  </ul>
+                  <p><strong>🚨 The employee may think they lost signal, but the attacker is already active on the network.</strong></p>
                 </div>
               </div>
 
               <div class="card mt-3">
                 <div class="content">
                   <h5>🛠️ Resolution</h5>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr><th>Countermeasure</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>IMEI whitelisting</td><td>Restrict network access to a predefined list of allowed device IMEIs.</td></tr>
+                      <tr><td>SIM swap lock</td><td>Enable additional password/passcode before any SIM change request is accepted.</td></tr>
+                      <tr><td>EMM / MDM usage</td><td>Enterprise device management enforces access policies and controls centrally.</td></tr>
+                      <tr><td>Encrypted traffic</td><td>All mobile apps should enforce HTTPS, VPN, TLS, and secure protocols.</td></tr>
+                      <tr><td>2FA over SIM access</td><td>Use app-based 2FA (like TOTP) instead of SMS OTP wherever possible.</td></tr>
+                    </tbody>
+                  </table>
+
+                  <h5>🔄 Relation to MAC Spoofing and Corporate Network Risks</h5>
+                  <p>While IMEI and SIM spoofing apply to mobile networks, they share conceptual similarity with <strong>MAC spoofing</strong> in wired and wireless LANs.</p>
                   <ul>
-                    <li>Verify device IMEI using carrier tools or *#06# code.</li>
-                    <li>Block or quarantine duplicate IMEIs via MDM or SIM policy.</li>
-                    <li>Update device firmware regularly to prevent modification vulnerabilities.</li>
-                    <li>Use IMEI whitelisting at the firewall or SIM level if applicable.</li>
+                    <li>IMEI identifies a mobile device; MAC address identifies a network device (wired/wireless).</li>
+                    <li>In MAC spoofing, an attacker forges a trusted device’s MAC address to gain access.</li>
+                    <li>This enables unauthorized entry and traffic interception.</li>
                   </ul>
+
+                  <h5>🎯 Enterprise Risk</h5>
+                  <p>If an employee accidentally leaks their MAC address (via screenshot, email, or QR-based Wi-Fi), attackers could:</p>
+                  <ul>
+                    <li>Clone the MAC to impersonate the device inside the company’s network.</li>
+                    <li>Access internal VLANs or routing segments.</li>
+                    <li>Bypass device whitelisting or firewall-based filters.</li>
+                  </ul>
+                  <div class="alert alert-danger">
+                    <strong>🛑 MAC addresses must be treated as confidential in enterprise environments.</strong>
+                  </div>
+
+                  <h5>🧪 Why We Use MAC Spoofing in Simulation (Instead of IMEI + SIM)</h5>
+                  <p>Since Cisco Packet Tracer does not simulate mobile networks, we cannot demonstrate IMEI or SIM spoofing directly.</p>
+                  <p>Instead, we simulate a local attack using <strong>MAC spoofing</strong>, which reflects similar threat vectors:</p>
+                  <ul>
+                    <li>Forged device identity</li>
+                    <li>User/device impersonation</li>
+                    <li>Internal network infiltration via cloned identifiers</li>
+                  </ul>
+
+                  <p>📦 Our Packet Tracer simulation demonstrates a rogue device bypassing MAC-based filtering to access a restricted LAN segment — representing the local equivalent of IMEI/SIM hijacking threats.</p>
                 </div>
               </div>
+
 
               <div class="card mt-3">
                 <div class="content">

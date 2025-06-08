@@ -63,8 +63,23 @@
               <div class="card mt-3">
                 <div class="content">
                   <h5>🧾 Problem Description</h5>
-                  <p>Fiber optic cables carry light signals. A simple physical crack, twist, or cut may break connectivity entirely — without visible signs.</p>
-                  <p>This is common in underground or ceiling installations.</p>
+                  <p>Fiber optic cables transmit data as light pulses. Any physical imperfection—such as a microbend, macro bend, twist, stress, or break—can disrupt signal transmission entirely.</p>
+                  <p>Unlike copper cables, fiber cables do not degrade gradually. A minor fault can lead to complete signal loss or unstable communication with intermittent behavior.</p>
+                  <p><strong>Common causes of fiber damage include:</strong></p>
+                  <ul>
+                    <li>Physical damage from construction, rodents, or accidental cutting</li>
+                    <li>Excessive bending (violating minimum bend radius)</li>
+                    <li>Moisture ingress due to broken outer jacket or poor sealing</li>
+                    <li>Electromagnetic induction from nearby power lines (affecting converters or transceivers)</li>
+                    <li>Connector contamination: dust or oil can cause 20-30% loss</li>
+                  </ul>
+                  <p><strong>Symptoms of fiber problems:</strong></p>
+                  <ul>
+                    <li>Link light is off or blinking abnormally</li>
+                    <li>High latency or packet loss with no network congestion</li>
+                    <li>Fluctuating throughput on fiber uplinks</li>
+                    <li>Complete communication failure with no visual indicators</li>
+                  </ul>
                 </div>
               </div>
 
@@ -72,13 +87,16 @@
                 <div class="content">
                   <h5>🛠️ Resolution</h5>
                   <ul>
-                    <li>Inspect cable runs physically with flashlight and mirror.</li>
-                    <li>Use fiber testers (VFL / OTDR) to detect exact break location.</li>
-                    <li>Replace or re-splice damaged fiber segment.</li>
-                    <li>Use proper bend radius in patch panels and cable trays.</li>
+                    <li>Use <strong>VFL (Visual Fault Locator)</strong> for short-distance fault detection (red light leaks through broken fiber).</li>
+                    <li>For long distances, use <strong>OTDR (Optical Time Domain Reflectometer)</strong> to identify exact break location in meters.</li>
+                    <li><strong>Re-splice damaged sections</strong> using fusion splicer and protect them with heat-shrink sleeves.</li>
+                    <li>Clean all fiber connectors before inserting—use <code>fiber optic cleaning pens</code> or alcohol wipes.</li>
+                    <li>Maintain proper bend radius: for single-mode fiber, minimum is ~30mm; for multi-mode ~10mm.</li>
+                    <li>Always label fiber trays, patch panels, and ensure proper color-coding and light path documentation.</li>
                   </ul>
                 </div>
               </div>
+
 
               <div class="card mt-3">
                 <div class="content">

@@ -63,22 +63,60 @@
               <div class="card mt-3">
                 <div class="content">
                   <h5>🧾 Problem Description</h5>
-                  <p>When two or more switches are connected in a circular way without loop prevention protocols, a **switching loop** is formed.</p>
-                  <p>This causes broadcast storms, MAC table instability, and full network outage.</p>
+                  <p>A <strong>switching loop</strong> occurs when two or more switches are interconnected in a circular manner without any loop prevention mechanisms in place. In such a topology, Ethernet frames can circulate endlessly, creating a condition called a <strong>broadcast storm</strong>.</p>
+
+                  <p>Unlike routers, Layer 2 switches do not have a built-in mechanism to detect or prevent loops. When a broadcast or unknown unicast frame is received on a port, the switch floods it out of all other ports (except the incoming one). If there is a loop, the same frame will return through another switch, and the process repeats indefinitely. This leads to:</p>
+
+                  <ul>
+                    <li><strong>Severe congestion:</strong> Links are saturated with looping frames.</li>
+                    <li><strong>MAC address table instability:</strong> Switches continuously update their MAC tables with incorrect port mappings.</li>
+                    <li><strong>High CPU usage:</strong> Switches get overwhelmed trying to process infinite traffic.</li>
+                    <li><strong>Network outage:</strong> Normal traffic cannot be transmitted, even if the cabling and hardware are physically intact.</li>
+                  </ul>
+
+                  <p>Switching loops are not hypothetical — they are a real-world issue, often caused by accidental redundant connections, improperly configured switches, or unmanaged devices. Even a small loop can bring down an entire campus network within seconds.</p>
                 </div>
-              </div>
+
 
               <div class="card mt-3">
-                <div class="content">
-                  <h5>🛠️ Resolution</h5>
-                  <ul>
-                    <li>Enable Spanning Tree Protocol (STP) on all managed switches.</li>
-                    <li>Use loop guard or BPDU guard features on access ports.</li>
-                    <li>Avoid connecting switches redundantly unless STP is confirmed active.</li>
-                    <li>Disconnect one leg of the loop to recover the network instantly.</li>
-                  </ul>
-                </div>
+              <div class="content">
+                <h5>🛠️ Resolution</h5>
+                <p>The primary solution to switching loops is to implement the <strong>Spanning Tree Protocol (STP)</strong>, defined in IEEE 802.1D. STP is a Layer 2 loop-prevention mechanism that dynamically disables redundant links to form a loop-free logical topology while still allowing physical redundancy for fault tolerance.</p>
+
+                <p><strong>How STP Works:</strong></p>
+                <ul>
+                  <li>STP elects a <strong>Root Bridge</strong> (the central reference switch) based on Bridge ID (priority + MAC address).</li>
+                  <li>All switches calculate the shortest path to the Root Bridge.</li>
+                  <li>Ports that would create loops are placed in a <code>Blocking</code> or <code>Discarding</code> state.</li>
+                  <li>If the active path fails, STP automatically activates a backup link within ~30–50 seconds (or faster with RSTP).</li>
+                </ul>
+
+                <p><strong>Real-World Benefits:</strong></p>
+                <ul>
+                  <li>Eliminates the need to physically remove cables during a loop.</li>
+                  <li>Provides redundancy while maintaining a loop-free environment.</li>
+                  <li>Minimizes network downtime in the event of link failure.</li>
+                  <li>Reduces operational costs compared to installing new hardware.</li>
+                </ul>
+
+                <p><strong>STP Variants:</strong></p>
+                <ul>
+                  <li><strong>RSTP (802.1w):</strong> Rapid Spanning Tree Protocol – faster convergence.</li>
+                  <li><strong>MSTP (802.1s):</strong> Multiple Spanning Tree – supports VLAN-aware topologies.</li>
+                  <li><strong>PVST+ (Cisco):</strong> Per-VLAN STP – STP instance per VLAN.</li>
+                </ul>
+
+                <p><strong>Best Practices:</strong></p>
+                <ul>
+                  <li>Enable STP on all managed switches by default.</li>
+                  <li>Use <code>BPDU Guard</code> and <code>Loop Guard</code> features to protect against rogue switches or misconfigurations.</li>
+                  <li>Always test redundancy and STP state transitions in a lab or simulation environment before production deployment.</li>
+                </ul>
+
+                <p>For unmanaged switches (typically no STP support), avoid redundant links or use routers/firewalls with STP-awareness. In small offices, physical loop prevention remains the only option.</p>
               </div>
+            </div>
+
 
               <div class="card mt-3">
                 <div class="content">
