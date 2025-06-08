@@ -11,8 +11,8 @@
   <link href="assets/css/master.css" rel="stylesheet">
 </head>
 <style>
-    .text-muted{
-      color: #cc6e6e;
+    p.text-muted {
+      color: #575757 !important;
     }
     body {
       background-color: #161616 !important;
@@ -103,17 +103,16 @@
       </div>
       <ul class="list-unstyled components text-secondary">
         <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="shielded-cable-issue.html"><i class="fas fa-bolt"></i> Shielded Cable Issue</a></li>
-        <li><a href="fiber-issues.html"><i class="fas fa-network-wired"></i> Fiber Damage</a></li>
-        <li><a href="switch-loop.html"><i class="fas fa-exchange-alt"></i> Switch Loop</a></li>
-        <li><a href="imei-risk.html"><i class="fas fa-mobile-alt"></i> IMEI Risk</a></li>
-        <li><a href="dns-error.html"><i class="fas fa-globe"></i> DNS Error</a></li>
-        <li><a href="tcp-delay.html"><i class="fas fa-tachometer-alt"></i> TCP Delay</a></li>
-        <li><a href="upload-download.html"><i class="fas fa-upload"></i> Upload/Download</a></li>
-        <li><a href="port-in-use.html"><i class="fas fa-plug"></i> Port Conflict</a></li>
-        <li><a href="ssl-error.html"><i class="fas fa-lock"></i> SSL/TLS Issue</a></li>
-        <li class="active"><a href="firewall-port.html"><i class="fas fa-shield-alt"></i> Firewall Block</a></li>
-        <li><a href="bandwidth-stream.html"><i class="fas fa-video"></i> Stream Lag</a></li>
+        <li><a href="shielded-cable.html"><i class="fas fa-bolt"></i> Shielded Cable</a></li>
+        <li><a href="fiber-damage.html"><i class="fas fa-network-wired"></i> Broken Fiber Cable</a></li>
+        <li><a href="switch-loop.html"><i class="fas fa-exchange-alt"></i> Switch Loop - STP</a></li>
+        <li><a href="imei-risk.html"><i class="fas fa-mobile-alt"></i> IMEI+SIM Risk / MAC Spoof</a></li>
+        <li><a href="port-conflict.html"><i class="fas fa-plug"></i> Port Conflict (Auto Guider)</a></li>
+        <li><a href="dhcp-spoof.html"><i class="fas fa-user-secret"></i> DHCP IP Spoofing</a></li>
+        <li><a href="wireless-encryption.html"><i class="fas fa-wifi"></i> Wireless Sniffing → L5 Encryption</a></li>
+        <li><a href="topology.html"><i class="fas fa-stream"></i> TCP ACK → Topology Model</a></li>
+        <li><a href="stream-lag-quic.html"><i class="fas fa-video"></i> Stream Lag / QUIC + Firebase</a></li>
+        <li><a href="ddos-router.html"><i class="fas fa-shield-alt"></i> DDoS DNS Defense</a></li>
       </ul>
     </nav>
 
@@ -138,7 +137,7 @@
             <div class="col-md-12 page-header">
               <div class="page-pretitle">Application Layer Issue</div>
               <h2 class="page-title">Firewall Blocks HTTP Port</h2>
-              <p style="color: #575757;">HTTPS works, but HTTP is blocked – classic firewall port configuration error</p>
+              <p>HTTPS works, but HTTP is blocked – classic firewall port configuration error</p>
             </div>
           </div>
 
