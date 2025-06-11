@@ -96,6 +96,11 @@
   .code-box .copy-btn:hover {
     background: #5a5a5a;
   }
+
+  h4{
+    color: #ffffff !important;
+    font-weight: bold;
+  }
 </style>
 
 <body>
@@ -106,7 +111,7 @@
             </div>
             <ul class="list-unstyled components text-secondary">
               <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-              <li><a href="shielded-cable.html"><i class="fas fa-bolt"></i> Shielded Cable</a></li>
+              <li class="active"><a href="shielded-cable.html"><i class="fas fa-bolt"></i> Shielded Cable</a></li>
               <li><a href="fiber-damage.html"><i class="fas fa-network-wired"></i> Broken Fiber Cable</a></li>
               <li><a href="switch-loop.html"><i class="fas fa-exchange-alt"></i> Switch Loop - STP</a></li>
               <li><a href="imei-risk.html"><i class="fas fa-mobile-alt"></i> IMEI+SIM Risk / MAC Spoof</a></li>
@@ -148,7 +153,7 @@
             <div class="col-lg-12">
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🧾 Problem Description</h5>
+                  <h4>Problem Description</h4>
                   <p>Electromagnetic Interference (EMI) is a common threat to network signal quality. It occurs when electromagnetic radiation from external sources—such as lightning strikes, nearby power lines, industrial motors, UPS units, transformers, or even weather conditions like heavy rain—interferes with data transmission.</p>
 
                   <p>To combat these threats, Shielded Twisted Pair (STP) cables are often used instead of Unshielded Twisted Pair (UTP). STP cables include a metallic shield that protects the data lines from external noise and interference.</p>
@@ -181,7 +186,7 @@
 
             <div class="card mt-3">
               <div class="content">
-                <h5>🛠️ Resolution</h5>
+                <h4>Resolution</h4>
                 <ul>
                   <li>Use STP only when EMI sources are present; otherwise, UTP is simpler and more cost-effective.</li>
                   <li>Ground the cable shield at one end only (preferably patch panel side) to prevent ground loops.</li>
