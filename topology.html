@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <link rel="icon" type="image/png" href="network.png" />
-  <title>SSL/TLS Error | Yurtcu Networks</title>
+  <title>Topology Type | Yurtcu Networks</title>
   <link href="assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -157,7 +157,7 @@
             <div class="col-lg-12">
               <div class="card mt-3">
                 <div class="content">
-                  <h5>📉 Problem Description</h5>
+                  <h4>Problem Description</h4>
                   <p>In TCP-based networks, the efficiency of ACK (Acknowledgment) delivery plays a critical role in overall throughput. The underlying network topology—how nodes, switches, and routers are interconnected—can significantly influence this behavior.</p>
 
                   <p>Two common topologies are often compared in performance-sensitive environments:</p>
@@ -187,7 +187,7 @@
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🛠️ Resolution</h5>
+                  <h4>Resolution</h4>
                   <ul>
                     <li>Redesign physical topology into a <strong>star or hierarchical model</strong>.</li>
                     <li>Use managed switches that support <strong>QoS (Quality of Service)</strong> and <strong>flow control</strong>.</li>
@@ -196,7 +196,7 @@
                     <li>Minimize unnecessary switch hops by reducing inter-switch chaining.</li>
                   </ul>
 
-                  <h6>🧪 Suggested Packet Tracer Setup:</h6>
+                  <h5>Suggested Packet Tracer Setup:</h5>
                   <ul>
                     <li>Flat Topology: PC1 → SW1 → SW2 → SW3 → PC2</li>
                     <li>Star Topology: PC1 + PC2 both connect to SW_Core</li>
@@ -204,19 +204,19 @@
                     <li>Compare ping results and packet behavior</li>
                   </ul>
 
-                  <p>💡 This simulation helps demonstrate why modern networks (especially data centers and cloud infrastructure) heavily favor centralized or structured designs to minimize latency, especially in TCP-based traffic.</p>
+                  <p>This simulation helps demonstrate why modern networks (especially data centers and cloud infrastructure) heavily favor centralized or structured designs to minimize latency, especially in TCP-based traffic.</p>
                 </div>
               </div>
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5 class="text-center">EMI Protection Visual Comparison</h5>
+                  <h5 class="text-center">Star vs. Flat Network Topology</h5>
                   <div class="d-flex justify-content-center flex-wrap gap-3">
                     <div class="img-box text-center">
                       <img class="img-fluid rounded mx-auto d-block" style="height: 500px; width: 100%; object-fit: cover; background-color: #ffffff;" src="flat-vs-star.png"
                           alt="Shielded EMI"
                           class="equal-height-img">
-                      <p class="mt-2 text-muted" style="font-size: 0.9rem;">Shielded Twisted Pair protecting from EMI in harsh environments</p>
+                      <p class="mt-2 text-muted" style="font-size: 0.9rem;">Flat causes ACK delays and congestion; star offers faster, more efficient traffic flow.</p>
                     </div>
                   </div>
                 </div>

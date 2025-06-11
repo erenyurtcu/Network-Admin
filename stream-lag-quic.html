@@ -104,6 +104,12 @@
   .code-box .copy-btn:hover {
     background: #5a5a5a;
   }
+
+  h4{
+    color: #ffffff !important;
+    font-weight: bold;
+  }
+
 </style>
 <body>
   <div class="wrapper">
@@ -157,7 +163,7 @@
             <div class="col-lg-12">
               <div class="card mt-3">
                 <div class="content">
-                  <h5>📉 Problem Description</h5>
+                  <h4>Problem Description</h4>
                   <p>In corporate networks, users may experience delays when accessing live dashboards, real-time monitoring tools, or video-based training sessions. This phenomenon, known as <strong>stream lag</strong>, is often caused by:</p>
                   <ul>
                     <li>Poorly optimized TCP-based streaming protocols</li>
@@ -177,7 +183,7 @@
                 <h4>Resolution: Using Firebase + QUIC Protocol</h4>
                   <p>To solve this issue, modern enterprises adopt <strong>Firebase Realtime Database or Firestore</strong> combined with the <strong>QUIC protocol</strong> to reduce latency, improve resilience, and streamline user experience.</p>
 
-                  <h6>🔹 Why Firebase?</h6>
+                  <h6>Why Firebase?</h6>
                   <ul>
                     <li>Provides <strong>real-time data synchronization</strong> across devices and platforms</li>
                     <li>Works efficiently behind corporate NATs and firewalls</li>
@@ -185,7 +191,7 @@
                     <li>Integrates TLS encryption by default, ensuring secure data-in-transit</li>
                   </ul>
 
-                  <h6>🔹 Why QUIC over Traditional UDP or TCP?</h6>
+                  <h6>Why QUIC over Traditional UDP or TCP?</h6>
                   <ul>
                     <li><strong>0-RTT (Zero Round-Trip Time):</strong> Enables faster connections, especially on repeat visits</li>
                     <li><strong>Multiplexed Streams:</strong> Eliminates head-of-line blocking found in TCP</li>
@@ -194,7 +200,7 @@
                     <li><strong>Fewer retransmissions:</strong> Smarter packet loss recovery than TCP</li>
                   </ul>
 
-                  <h6>🧪 Real-World Scenario (Corporate Use Case)</h6>
+                  <h4>Real-World Scenario (Corporate Use Case)</h6>
                   <p>A logistics company uses a real-time shipment dashboard. Under TCP/WebSocket implementation, updates were delayed due to retransmission queues and slow ACKs.</p>
                   <p>After switching to Firebase + QUIC:</p>
                   <ul>
@@ -203,7 +209,7 @@
                     <li>Network resiliency improved during weak Wi-Fi or mobile handoffs</li>
                   </ul>
 
-                  <h6>📊 Comparison Table</h6>
+                  <h6>Comparison Table</h6>
                   <table class="table table-bordered">
                     <thead>
                       <tr>
@@ -240,20 +246,20 @@
                   </table>
 
                   <div class="alert alert-success">
-                    ✅ <strong>Conclusion:</strong> For modern enterprise apps requiring low-latency and high-reliability real-time data, Firebase over QUIC is a superior architectural choice.
+                    <strong>Conclusion:</strong> For modern enterprise apps requiring low-latency and high-reliability real-time data, Firebase over QUIC is a superior architectural choice.
                   </div>
                 </div>
               </div>
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5 class="text-center">EMI Protection Visual Comparison</h5>
+                  <h4 class="text-center">QUIC vs TCP: Faster Connections</h4>
                   <div class="d-flex justify-content-center flex-wrap gap-3">
                     <div class="img-box text-center">
                       <img class="img-fluid rounded mx-auto d-block" style="height: 500px; width: 100%; object-fit: cover;" src="quic-vs-https.gif"
                           alt="Shielded EMI"
                           class="equal-height-img">
-                      <p class="mt-2 text-muted" style="font-size: 0.9rem;">Shielded Twisted Pair protecting from EMI in harsh environments</p>
+                      <p class="mt-2 text-muted" style="font-size: 0.9rem;">QUIC cuts handshake delays with 0-RTT, making HTTPS faster and smoother than TCP.</p>
                     </div>
                   </div>
                 </div>

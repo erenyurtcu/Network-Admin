@@ -234,6 +234,11 @@ body {
     color: #fff;
 }
 
+h4{
+color: #ffffff !important;
+font-weight: bold;
+}
+
 /*------------------------------------------------------------------
 [4. Content / #content]
 */

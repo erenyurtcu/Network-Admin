@@ -104,6 +104,12 @@
   .code-box .copy-btn:hover {
     background: #5a5a5a;
   }
+
+    h4{
+    color: #ffffff !important;
+    font-weight: bold;
+  }
+
 </style>
 <body>
   <div class="wrapper">
@@ -157,7 +163,7 @@
             <div class="col-lg-12">
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🧾 Problem Description</h5>
+                  <h4>Problem Description</h4>
                   <p>A <strong>switching loop</strong> occurs when two or more switches are interconnected in a circular manner without any loop prevention mechanisms in place. In such a topology, Ethernet frames can circulate endlessly, creating a condition called a <strong>broadcast storm</strong>.</p>
 
                   <p>Unlike routers, Layer 2 switches do not have a built-in mechanism to detect or prevent loops. When a broadcast or unknown unicast frame is received on a port, the switch floods it out of all other ports (except the incoming one). If there is a loop, the same frame will return through another switch, and the process repeats indefinitely. This leads to:</p>
@@ -176,7 +182,7 @@
 
               <div class="card mt-3">
               <div class="content">
-                <h5>🛠️ Resolution</h5>
+                <h4>Resolution</h4>
                 <p>The primary solution to switching loops is to implement the <strong>Spanning Tree Protocol (STP)</strong>, defined in IEEE 802.1D. STP is a Layer 2 loop-prevention mechanism that dynamically disables redundant links to form a loop-free logical topology while still allowing physical redundancy for fault tolerance.</p>
 
                 <p><strong>How STP Works:</strong></p>
@@ -215,13 +221,13 @@
 
             <div class="card mt-3">
               <div class="content">
-                <h5 class="text-center">EMI Protection Visual Comparison</h5>
+                <h5 class="text-center">Switch Loop Caused by Redundant Links</h5>
                 <div class="d-flex justify-content-center flex-wrap gap-3">
                   <div class="img-box text-center">
                     <img class="img-fluid rounded mx-auto d-block" style="height: 500px; width: 100%; object-fit: cover;" src="https://www.moving-it.net/wp-content/uploads/2016/03/Topologia-STP.png"
                         alt="Shielded EMI"
                         class="equal-height-img">
-                    <p class="mt-2 text-muted" style="font-size: 0.9rem;">Shielded Twisted Pair protecting from EMI in harsh environments</p>
+                    <p class="mt-2 text-muted" style="font-size: 0.9rem;">A loop between switches causes broadcast storms and network failure in the absence of STP.</p>
                   </div>
                 </div>
               </div>

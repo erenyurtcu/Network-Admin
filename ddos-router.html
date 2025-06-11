@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <link rel="icon" type="image/png" href="network.png" />
-  <title>Firewall Port Block | Yurtcu Networks</title>
+  <title>DDoS | Yurtcu Networks</title>
   <link href="assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -148,7 +148,7 @@
             <div class="col-lg-12">
               <div class="card mt-3">
                 <div class="content">
-                  <h5>💣 Problem Description: DDoS & DNS Flood Attacks</h5>
+                  <h4>Problem Description</h4>
                   <p>Distributed Denial of Service (DDoS) attacks aim to overwhelm network resources by sending massive traffic to targets. One prevalent variant is the <strong>DNS Flood</strong>, where attackers send a deluge of DNS requests to overburden name servers or use open resolvers for reflection attacks.</p>
                   
                   <p><strong>Primary Objectives of Attackers:</strong></p>
@@ -159,7 +159,7 @@
                     <li>Consume CPU and memory of edge devices (routers/firewalls)</li>
                   </ul>
 
-                  <p><strong>❗ Real-world behavior:</strong> Even if backend services are intact, unresolved DNS queries render the entire infrastructure unreachable. Users perceive it as "internet down."</p>
+                  <p><strong>Real-world behavior:</strong> Even if backend services are intact, unresolved DNS queries render the entire infrastructure unreachable. Users perceive it as "internet down."</p>
 
                   <p>These attacks are often difficult to trace due to:</p>
                   <ul>
@@ -172,7 +172,7 @@
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🛡️ Resolution: Multi-layered Defense Strategy</h5>
+                  <h4>Resolution: Multi-layered Defense Strategy</h4>
                   <p>Defending against DNS-based DDoS requires <strong>Layer 3–7 mitigation techniques</strong> integrated across infrastructure and cloud. Suggested actions include:</p>
 
                   <ul>
@@ -186,11 +186,11 @@
 
 
 
-                  <h6>🔗 Cisco ACL Example for DNS Flood</h6>
+                  <h4>Cisco ACL Example for DNS Flood</h4>
                   <div class="code-box">
                     <div class="code-header">Cisco Config</div>
                     <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                    <pre><code>access-list 101 deny udp any any eq 53
+                    <pre><code>          access-list 101 deny udp any any eq 53
           access-list 101 permit ip any any
 
           interface GigabitEthernet0/0
@@ -211,7 +211,7 @@
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🧪 Simulation: DNS Flood in Cisco Packet Tracer</h5>
+                  <h5>Simulation: DNS Flood in Cisco Packet Tracer</h5>
                   <p>Although Packet Tracer does not simulate full-scale DDoS, you can simulate the <strong>behavior</strong> via repeated UDP traffic:</p>
                   <ul>
                     <li>Rogue PC floods DNS requests (UDP/53) to internal server.</li>
@@ -224,13 +224,13 @@
                     <li>DNS port redirected or blocked using reflexive ACLs</li>
                     <li>Simulated CPU overload on edge router (via traffic generator)</li>
                   </ul>
-                  <p><strong>🧩 Included: .pkt file + router ACL lab + explanation PDF</strong></p>
+                  <p><strong>Included: .pkt file + router ACL lab + explanation PDF</strong></p>
                 </div>
               </div>
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🔍 Real-World Case: Amplification + Reflection</h5>
+                  <h5>Real-World Case: Amplification + Reflection</h5>
                   <p>Attackers spoof victim IPs and send DNS queries to public resolvers. The responses — much larger than requests — get sent to the victim.</p>
                   <p>This “amplifies” the attack with minimal effort and <strong>redirects attack load to innocent systems</strong>.</p>
                   <p>Such attacks are mitigated using:</p>
@@ -244,13 +244,13 @@
 
              <div class="card mt-3">
                 <div class="content">
-                  <h5 class="text-center">EMI Protection Visual Comparison</h5>
+                  <h5 class="text-center">DNS Amplification DDoS Attack</h5>
                   <div class="d-flex justify-content-center flex-wrap gap-3">
                     <div class="img-box text-center">
                       <img class="img-fluid rounded mx-auto d-block" style="height: 500px; width: 100%; object-fit: cover;" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FIBEeoyzoa64lVGlWKaRV/3b878bb03df1729b48cd3f667cdfe3de/amplification_ddos_example.png"
                           alt="Shielded EMI"
                           class="equal-height-img">
-                      <p class="mt-2 text-muted" style="font-size: 0.9rem;">Shielded Twisted Pair protecting from EMI in harsh environments</p>
+                      <p class="mt-2 text-muted" style="font-size: 0.9rem;">The attacker sends spoofed DNS requests via a bot to open resolvers. These respond with large replies to the victim, amplifying traffic and overwhelming the target.</p>
                     </div>
                   </div>
                 </div>

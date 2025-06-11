@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <link rel="icon" type="image/png" href="network.png" />
-  <title>TCP Delay | Yurtcu Networks</title>
+  <title>DHCP Spoofing | Yurtcu Networks</title>
   <link href="assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -167,9 +167,9 @@ function copyToClipboard(button) {
             <div class="col-lg-12">
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🐍 Problem Description</h5>
+                  <h4>Problem Description</h4>
                   <p>The DHCP server automatically assigns IP addresses to devices joining the network. However, if an attacker interferes with this process, the network can be compromised.</p>
-                  <p><strong>🔥 Critical Scenario: Rogue DHCP + ARP Poisoning</strong></p>
+                  <p><strong>Critical Scenario: Rogue DHCP + ARP Poisoning</strong></p>
                   <ul>
                     <li>An attacker connects to the network and pretends to be a DHCP server.</li>
                     <li>They assign incorrect default gateway (router) addresses to new clients.</li>
@@ -178,21 +178,21 @@ function copyToClipboard(button) {
                     <li>This enables full traffic monitoring and a potential Man-in-the-Middle (MitM) attack.</li>
                   </ul>
 
-                  <p>🧪 Techniques Used:</p>
+                  <p>Techniques Used:</p>
                   <ul>
                     <li><strong>IP Spoofing</strong> – The attacker fakes the source IP address.</li>
                     <li><strong>ARP Poisoning</strong> – The attacker corrupts ARP tables to link IPs to fake MAC addresses.</li>
                     <li><strong>DHCP Starvation</strong> – All IPs are requested to exhaust the DHCP pool, then a rogue DHCP server takes over.</li>
                   </ul>
 
-                  <p>🧠 <strong>Stealth Factor:</strong> If the attacker forwards the traffic to the real router, employees won’t notice a problem.</p>
-                  <p><strong>⚠️ Real-World Threat:</strong> These attacks are especially common in public Wi-Fi, unprotected LANs, and poorly configured enterprise networks.</p>
+                  <p><strong>Stealth Factor:</strong> If the attacker forwards the traffic to the real router, employees won’t notice a problem.</p>
+                  <p><strong>Real-World Threat:</strong> These attacks are especially common in public Wi-Fi, unprotected LANs, and poorly configured enterprise networks.</p>
                 </div>
               </div>
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🛡️ Resolution</h5>
+                  <h4>Resolution</h4>
                   <ul>
                     <li><strong>1. DHCP Snooping (Layer 2 Firewall):</strong>
                       <ul>
@@ -241,7 +241,7 @@ function copyToClipboard(button) {
                         <li>Devices are authenticated before joining the network.</li>
                         <li>Unauthorized clients are isolated or assigned to guest VLANs.</li>
                       </ul>
-                      <p><em>📌 Example Technologies:</em> Cisco ISE, Aruba ClearPass, FortiNAC, Microsoft Intune (MDM)</p>
+                      <p><em>Example Technologies:</em> Cisco ISE, Aruba ClearPass, FortiNAC, Microsoft Intune (MDM)</p>
                     </li>
                   </ul>
                 </div>
@@ -250,22 +250,24 @@ function copyToClipboard(button) {
               <div class="card mt-3">
                 <div class="content">
                   
-                  <h5 class="text-center">EMI Protection Visual Comparison</h5>
+                  <h5 class="text-center">DHCP Starvation Attack</h5>
                   <div class="d-flex justify-content-center flex-wrap gap-3">
                     <div class="img-box text-center">
                       <img class="img-fluid rounded mx-auto d-block" style="height: 500px; width: 100%; object-fit: cover;" src="dhcp-spoofing.png"
                           alt="Shielded EMI"
                           class="equal-height-img">
-                      <p class="mt-2 text-muted" style="font-size: 0.9rem;">Shielded Twisted Pair protecting from EMI in harsh environments</p>
+                      <p class="mt-2 text-muted" style="font-size: 0.9rem;">The attacker floods the DHCP server with fake requests, exhausting available IPs.
+                      </p><p style="margin-top: -15px;">Legitimate users can't get IP addresses,enabling a rogue DHCP server to take over and launch further attacks like ARP poisoning or MitM.</p>
                     </div>
                   </div>
-                  <h5 class="text-center">EMI Protection Visual Comparison</h5>
+                  <h5 class="text-center">Rogue DHCP Server Attack</h5>
                   <div class="d-flex justify-content-center flex-wrap gap-3">
                     <div class="img-box text-center">
                       <img class="img-fluid rounded mx-auto d-block" style="height: 500px; width: 100%; object-fit: cover;" src="dhcp-spoofing2.jpg"
                           alt="Shielded EMI"
                           class="equal-height-img">
-                      <p class="mt-2 text-muted" style="font-size: 0.9rem;">Shielded Twisted Pair protecting from EMI in harsh environments</p>
+                      <p class="mt-2 text-muted" style="font-size: 0.9rem;">A rogue DHCP server set up by an attacker sends faster IP responses than the legitimate server,
+                      </p><p style="margin-top: -15px;">tricking the client into accepting malicious network settings—enabling traffic redirection and potential Man-in-the-Middle attacks.</p>
                     </div>
                   </div>
 

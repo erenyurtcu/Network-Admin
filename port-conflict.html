@@ -159,17 +159,17 @@
             <div class="col-lg-12">
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🧾 Problem Description</h5>
+                  <h4>Problem Description</h4>
                   <p>The "Port Already in Use" error is a common issue among developers, particularly when launching local servers or web applications. This happens when the desired port (e.g., 3000, 8080, 5000) is already occupied by another process.</p>
 
-                  <h6>🔥 Common Scenarios:</h6>
+                  <h6>  Common Scenarios:</h6>
                   <ul>
                     <li>A developer attempts to launch a React/Node.js app on port 3000, but a previously failed session is still occupying it.</li>
                     <li>Backend services (Django, Flask, Spring, NGINX) attempt to bind to ports like 80, 443, or 8080 and encounter collisions.</li>
                     <li>Docker containers or virtual machines try to bind to the same host port, resulting in conflict.</li>
                   </ul>
 
-                  <h6>💣 Risks and Challenges:</h6>
+                  <h6>Risks and Challenges:</h6>
                   <ul>
                     <li>Developers waste time identifying which process is locking the port.</li>
                     <li>Solutions often involve restarting the OS or manually killing processes.</li>
@@ -181,10 +181,10 @@
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🛠️ Resolution: Automatic Port Guider Concept</h5>
+                  <h4>Resolution: Automatic Port Guider Concept</h4>
                   <p>To avoid these conflicts, a mechanism similar to DHCP can be used — a dynamic port allocator that intelligently assigns available ports within a specified range.</p>
 
-                  <h6>💡 Automatic Port Guider (APG):</h6>
+                  <h6>Automatic Port Guider (APG):</h6>
                   <ul>
                     <li>Scans a defined port range (e.g., 3000–4000, 8000–9000).</li>
                     <li>Checks if the desired port is free, otherwise increments to find the next available one.</li>
@@ -192,14 +192,14 @@
                     <li>Can integrate into popular frameworks like Vite, Next.js, or React scripts.</li>
                   </ul>
 
-                  <h6>🔧 Real-World Analogies:</h6>
+                  <h6>Real-World Analogies:</h6>
                   <ul>
                     <li>React/Vite already do this by attempting 3000 → 3001 → 3002...</li>
                     <li>NGINX or Apache usually fail silently if the port is taken.</li>
                     <li>Docker Compose maps host-to-container ports dynamically to avoid collisions.</li>
                   </ul>
 
-                  <h6>📈 Benefits:</h6>
+                  <h6>Benefits:</h6>
                   <ul>
                     <li>Zero manual intervention for resolving conflicts.</li>
                     <li>Increased success rate of local server launches.</li>
@@ -211,7 +211,7 @@
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5>🚫 Why It's Not Simulated in Cisco Packet Tracer</h5>
+                  <h5>Why It's Not Simulated in Cisco Packet Tracer</h5>
                   <p>While this problem is technical and highly relevant in software development, Cisco Packet Tracer focuses on OSI layers, packet-level switching/routing, and protocol behavior. It does not simulate operating system-level port binding or application layer socket management.</p>
 
                   <h6>Therefore:</h6>
@@ -226,13 +226,13 @@
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5 class="text-center">EMI Protection Visual Comparison</h5>
+                  <h5 class="text-center">Port 80 Already in Use</h5>
                   <div class="d-flex justify-content-center flex-wrap gap-3">
                     <div class="img-box text-center">
                       <img class="img-fluid rounded mx-auto d-block" style="height: 300px; width: 100%; object-fit: cover;" src="port-in-use.png"
                           alt="Shielded EMI"
                           class="equal-height-img">
-                      <p class="mt-2 text-muted" style="font-size: 0.9rem;">Shielded Twisted Pair protecting from EMI in harsh environments</p>
+                      <p class="mt-2 text-muted" style="font-size: 0.9rem;">The server can't start because port 80 is taken. Use dynamic port allocation to avoid conflicts.</p>
                     </div>
                   </div>
                 </div>
