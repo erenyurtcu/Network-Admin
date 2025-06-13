@@ -211,25 +211,6 @@
 
               <div class="card mt-3">
                 <div class="content">
-                  <h5>Simulation: DNS Flood in Cisco Packet Tracer</h5>
-                  <p>Although Packet Tracer does not simulate full-scale DDoS, you can simulate the <strong>behavior</strong> via repeated UDP traffic:</p>
-                  <ul>
-                    <li>Rogue PC floods DNS requests (UDP/53) to internal server.</li>
-                    <li>Edge Router ACL blocks and logs excessive traffic.</li>
-                    <li>Legitimate traffic continues, proving selective protection works.</li>
-                  </ul>
-                  <p>This mimics a real-world mitigation scenario. Additional simulations may include:</p>
-                  <ul>
-                    <li>PC sending pings every 10ms → Router drops based on rate</li>
-                    <li>DNS port redirected or blocked using reflexive ACLs</li>
-                    <li>Simulated CPU overload on edge router (via traffic generator)</li>
-                  </ul>
-                  <p><strong>Included: .pkt file + router ACL lab + explanation PDF</strong></p>
-                </div>
-              </div>
-
-              <div class="card mt-3">
-                <div class="content">
                   <h5>Real-World Case: Amplification + Reflection</h5>
                   <p>Attackers spoof victim IPs and send DNS queries to public resolvers. The responses — much larger than requests — get sent to the victim.</p>
                   <p>This “amplifies” the attack with minimal effort and <strong>redirects attack load to innocent systems</strong>.</p>
@@ -253,17 +234,6 @@
                       <p class="mt-2 text-muted" style="font-size: 0.9rem;">The attacker sends spoofed DNS requests via a bot to open resolvers. These respond with large replies to the victim, amplifying traffic and overwhelming the target.</p>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div class="card mt-3">
-                <div class="content">
-                  <h5>📁 Resources</h5>
-                  <ul>
-                    <li><a href="#">📦 Download Packet Tracer Simulation (.pkt)</a></li>
-                    <li><a href="#">📄 DNS Flood Detection & ACL Guide (PDF)</a></li>
-                    <li><a href="#">🎥 Video: Protecting Routers Against Floods</a></li>
-                  </ul>
                 </div>
               </div>
             </div>
