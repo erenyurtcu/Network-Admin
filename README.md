@@ -16,6 +16,15 @@ The goal is to provide a **comprehensive admin guide** that network engineers or
 
 ---
 
+## 🌐 Live HTML Access
+
+You can explore all topics through the web version here:  
+🔗 **[https://erenyurtcu.github.io/Network-Admin/](https://erenyurtcu.github.io/Network-Admin/)**
+
+The GitHub Pages site includes direct links to each HTML page and downloadable `.pkt` simulations.
+
+---
+
 ## 🗂️ Folder Structure
 
 ```
